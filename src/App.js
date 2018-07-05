@@ -36,6 +36,8 @@ const App = () => (
           path="/info"
           component={InfoPage}
         />
+        {/* Add routes for viewpage and addpage */}
+        
       </Switch>
     </Router>
   </div>

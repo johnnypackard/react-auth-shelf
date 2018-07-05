@@ -22,6 +22,7 @@ class InfoPage extends Component {
   render() {
     let content = null;
 
+    //will only load  if logged in
     if (this.props.user.userName) {
       content = (
         <div>
@@ -30,8 +31,9 @@ class InfoPage extends Component {
           </p>
         </div>
       );
-    }
+    } //end
 
+    //always shown
     return (
       <div>
         <Nav />
