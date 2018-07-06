@@ -9,34 +9,34 @@ const mapStateToProps = state => ({
   class AddItemForm extends Component {
       constructor() {
           super();
-          this.state = { item:
+          this.state = 
               {
-                user: this.props.user, // should be getting user_id from SQL
+                // user: this.props.user.id, // should be getting user_id from SQL
                 description: '',
-                image_url: '',
-                person_id: this.props.person_id    
+                image_url: ''
+                // person_id: this.props.person_id    
               } 
-          }
+          
       }
 
-      handleChange = (event) => {
+      handleChange = (value) => (event) => {
           this.setState({
-              ...this.state, description: event.target.value, image_url: event.target.value
+              ...this.state, [value]: event.target.value
           });
       }
 
       handleSubmit = (event) => {
           event.preventDefault();
-          this.props.sendItemToRedux(this.state);
+          this.sendItemToRedux();
           console.log('This is being sent:', this.state);
       }
 
       sendItemToRedux = () => {
-          const body = this.state;
-          const action = {type: 'ADD_ITEM', payload: body};
+        //   const body = this.state;
+          const action = {type: 'ADD_ITEM', payload: {...this.state}};
 
-          this.props.description(action)
-          console.log(body);
+          this.props.dispatch(action)
+        //   console.log(body);
       }
 
       handleOnClick = () => {
@@ -53,15 +53,16 @@ const mapStateToProps = state => ({
                 <div>
                     <form onSubmit={this.handleSubmit}>
                         <div>
-                            <input onChange={this.handleChange} placeholder="Item Description" value={this.state.item.description} name="Description" />
+                            <input onChange={this.handleChange('description')} placeholder="Item Description" value={this.state.description} name="Description" />
                         </div>
                         <div>
-                            <input onChange={this.handleChange} placeholder="Image URL" value={this.state.item.image_url} name="Image" />
+                            <input onChange={this.handleChange('image_url')} placeholder="Image URL" value={this.state.image_url} name="Image" />
                         </div>
+                        <button>
+                        Add your item!
+                        </button>
                     </form>
-                    <button onClick={this.handleOnClick}>
-                    Add your item!
-                    </button>
+
                 </div>    
               </div>
         );

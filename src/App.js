@@ -11,7 +11,7 @@ import LoginPage from './components/LoginPage/LoginPage';
 import RegisterPage from './components/RegisterPage/RegisterPage';
 import UserPage from './components/UserPage/UserPage';
 import InfoPage from './components/InfoPage/InfoPage';
-// import AddPage from './components/AddItemPage/AddItemForm';
+import AddPage from './components/AddItemPage/AddItemForm';
 
 import './styles/main.css';
 
@@ -38,10 +38,10 @@ const App = () => (
           component={InfoPage}
         />
 
-        {/* <Route
+        <Route
           path='/add'
           component={AddPage}
-        /> */}
+        />
         {/* Add routes for viewpage and addpage */}
         
       </Switch>
