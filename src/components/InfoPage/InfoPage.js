@@ -14,6 +14,11 @@ class InfoPage extends Component {
   getShelf = () => {
     this.props.dispatch({type: 'GET_SHELF'});
   }
+
+  deleteItem = (id) => {
+    this.props.dispatch({type: 'DELETE_ITEM', payload: id});
+  }
+
   componentDidMount() {
     this.props.dispatch({type: USER_ACTIONS.FETCH_USER});
     this.getShelf();
@@ -33,13 +38,12 @@ class InfoPage extends Component {
       content = (
         <div>
           <h1>CHECK OUT THIS SHELF!</h1>
-          {JSON.stringify(this.props.shelf)}
           {
             this.props.shelf.map( item => 
               <div key={item.id}>
                 <img src={item.image_url} alt=""/>
                 <p>{item.description}</p>
-                <button>Delete</button>
+                <button onClick={() => this.deleteItem(item.id)}>Delete</button>
               </div>
             )
           }
