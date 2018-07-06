@@ -21,7 +21,6 @@ router.get('/', (req, res) => {
     } else {
         res.sendStatus(403);
     }
-    res.sendStatus(200); // For testing only, can be removed
 });
 
 
