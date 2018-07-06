@@ -17,6 +17,7 @@ function* addItem(action) {
 function* getShelf(action){
     try {
         const itemResponse = yield call(axios.get, '/api/shelf');
+        yield put({type: 'UPDATE_SHELF', payload: itemResponse.data})
     } catch (error) {
         console.log('Something went wrong in get all');
     }
