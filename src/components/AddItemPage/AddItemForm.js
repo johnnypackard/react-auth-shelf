@@ -11,7 +11,7 @@ const mapStateToProps = state => ({
           super();
           this.state = { item:
               {
-                user: this.props.user, // should be getting user_id from SQL
+                user: this.props.user.id, // should be getting user_id from SQL
                 description: '',
                 image_url: '',
                 person_id: this.props.person_id    
